@@ -35,6 +35,14 @@ export function SignUp() {
                     color: '#2a4565',
                     marginTop: 25
                 }}>Sign Up</Text>
+                <TouchableHighlight>
+                    <Text style={{
+                        fontFamily: 'Martel-Bold',
+                        fontSize: 13,
+                        color: '#4978ae',
+                        textAlign: "center",
+                    }}>Already have an account? Login here!</Text>
+                </TouchableHighlight>
                 <Text style={{
                     fontFamily: 'Martel-Regular',
                     fontSize: 28,
@@ -183,7 +191,7 @@ export function SignUp() {
                     width: '50%',
                     height: 50,
                 }}>
-                    <Text style={styles.moreButtonText}>More >></Text>
+                    <Text style={styles.moreButtonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
             </View>
