@@ -7,17 +7,11 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
 import { Nav } from './components/Nav'
 import { SignUp } from './components/SignUp'
 import { Login } from './components/Login'
+import { DraftArticle } from './components/DraftArticle'
 
 
 const App: () => React$Node = () => {
@@ -26,8 +20,9 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <Nav />
+        <DraftArticle />
         {/* <Login /> */}
-        <SignUp />
+        {/* <SignUp /> */}
         
       </SafeAreaView>
     </>
