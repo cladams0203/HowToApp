@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import { Nav } from './components/Nav'
 import { SignUp } from './components/SignUp'
+import { Login } from './components/Login'
 
 
 const App: () => React$Node = () => {
@@ -25,6 +26,7 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <Nav />
+        {/* <Login /> */}
         <SignUp />
         
       </SafeAreaView>

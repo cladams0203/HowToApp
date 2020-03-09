@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#36827e',
         paddingTop: 10,
         flexDirection: "row",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
     },
     footerHeading: {
         color: 'white',
