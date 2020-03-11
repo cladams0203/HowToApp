@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, Text, ScrollView, Image } from 'react-native'
+import { SafeAreaView, View, StyleSheet, Text, ScrollView, Image } from 'react-native'
 import { styles } from './styles'
-export function Topics() {
+import { Nav } from './Nav'
+export function Topics({ navigation }) {
     const [topics, setTopics] = useState([
         {name: 'Greatest Grilled Cheese', img: require('../images/grilledCheese.png'), topic: 'Food & Ents'},
         {name: 'Crochet a Baby Yoda', img: require('../images/babyYoda.png'), topic: 'Hobbies & Crafts'},
@@ -12,6 +13,8 @@ export function Topics() {
 
     ])
     return(
+        <SafeAreaView>
+            <Nav navigation={navigation} />
         <ScrollView style={styles.mainContainer}>
             <Text style={styles.topicHeading}>Topics</Text>
             <View style={styles.topicsContainer}>
@@ -22,7 +25,7 @@ export function Topics() {
                                 <Text style={styles.topicText}>{item.topic}</Text>
                             </View>
                 })
-                }
+            }
             </View>
             <View style={styles.footerContainer}>
                 <Image source={require('../images/footerStudio.png')} style={{alignSelf: "center", marginBottom: 10}}></Image>
@@ -33,6 +36,7 @@ export function Topics() {
                 <Image source={require('../images/footerDraft.png')} style={{alignSelf: "center", marginBottom: 10}}></Image>
             </View>
         </ScrollView>
+        </SafeAreaView>
     )
 }
 

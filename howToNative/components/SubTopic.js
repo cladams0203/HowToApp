@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, Text, View, TouchableHighlight, Image } from 'react-native'
+import { SafeAreaView, ScrollView, Text, View, TouchableHighlight, Image } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
 import { styles } from './styles'
 import api from '../utils/api'
+import { Nav } from './Nav'
 
-export function SubTopic() {
+export function SubTopic({ navigation }) {
 
     const [selectedHowTo, setSelectedHowTo] = useState()
     console.log(selectedHowTo)
@@ -21,16 +22,18 @@ export function SubTopic() {
     }, [])
 
     return(
+        <SafeAreaView>
+            <Nav navigation={navigation} />
         <ScrollView style={styles.mainContainer}>
             <Text style={styles.topicHeading}>Hobbies & Crafts</Text>
             <Input 
                 placeholder='Search Topic' 
                 leftIcon={
                     <Icon name='search' color='#36827e' size={40} />
-                    } 
+                } 
                 inputContainerStyle={styles.topicSearch}
                 placeholderTextColor='#61bdb8'
-            />
+                />
             <View style={styles.subTopicButtonContioner}>
                 <TouchableHighlight style={styles.trendingButton}>
                     <Text style={styles.trendingButtonText}>Sort By: Trending</Text>
@@ -65,5 +68,6 @@ export function SubTopic() {
             </View>
          
         </ScrollView>
+        </SafeAreaView>
     )
 }
