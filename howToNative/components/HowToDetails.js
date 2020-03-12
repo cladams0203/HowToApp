@@ -10,7 +10,6 @@ export function HowToDetails({ navigation }) {
     useEffect(() => {
         api().get('/how-to/1')
             .then(res => {
-                console.log(res.data)
                 setHowTo(res.data)
             })
             .catch(err => {

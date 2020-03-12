@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { SafeAreaView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
 import { styles } from './styles'
-
+import { Nav } from './Nav'
+import { login } from '../utils/actions/userAction'
+import { useDispatch } from 'react-redux'
 
 export function Login({ navigation }) {
-
+    const dispatch = useDispatch()
     const [form, setForm] = useState({
         username: '',
         password: ''
@@ -72,7 +74,12 @@ export function Login({ navigation }) {
                         width: '50%',
                         height: 50,
                         marginTop: 50
-                    }}>
+                    }}
+                    onPress={() => {
+                        setForm({username: '', password: ''})
+                        dispatch(login(form))
+                    }}
+                    >
                     <Text style={styles.moreButtonText}>Submit</Text>
                 </TouchableHighlight>
             </View>

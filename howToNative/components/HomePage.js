@@ -37,7 +37,9 @@ export function HomePage(props) {
             <View style={styles.creatorContainer}>
                 <Image source={require('../images/studioIcon.png')} style={styles.creatorImage}></Image>
                 <Text style={styles.creatorHeading}>Creator Studio</Text>
-                <Text style={styles.creatorText}>Do more with a How-To account!  Log in or Sign Up Here</Text>
+                <TouchableHighlight style={{zIndex: 1, width: '100%'}} onPress={() => navigation.navigate('Sign Up')}>
+                    <Text style={styles.creatorText}>Do more with a How-To account!  Log in or Sign Up Here</Text>
+                </TouchableHighlight>
             </View>
             <View style={styles.draftContainer}>
                 <Image source={require('../images/draftIcon.png')} style={styles.creatorImage}></Image>

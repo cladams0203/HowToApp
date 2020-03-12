@@ -11,7 +11,7 @@ export function Nav({navigation }) {
             <Icon iconStyle={styles.icons} name='search'/>
             <Text style={styles.heading}>How-To</Text>
             <Icon iconStyle={styles.icons}
-                onPress={() => navigation.openDrawer()}
+                onPress={() => navigation.toggleDrawer()}
                 name='menu'/>
         </View>
         </SafeAreaView>

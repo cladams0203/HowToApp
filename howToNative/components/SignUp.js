@@ -3,9 +3,16 @@ import { SafeAreaView, Text, View, TextInput, Image, TouchableHighlight } from '
 import { styles } from './styles'
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+import { register } from '../utils/actions/userAction'
+import { useDispatch, useSelector } from 'react-redux'
 import { Nav } from './Nav'
 
+
 export function SignUp({ navigation }) {
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
+    console.log(user)
     const radio_props = [
         {label: 'Lurker', value: false, text: 'I\'m just here to learn'},
         {label: 'Contributor', value: true, text: 'I\'ve got stuff to contribute'}
@@ -17,7 +24,19 @@ export function SignUp({ navigation }) {
         bio: '',
         allowPost: ''
     })
-    console.log(form)
+    // console.log(form)
+
+    // const login = (input) => dispatch => {
+    //     dispatch({type: LOADING})
+    //     api().post('/users/register', input)
+    //         .then(res => {
+    //             dispatch({type: LOGIN_SUCCESS, payload: res.data})
+    //         })
+    //         .catch(err => {
+    //             dispatch({type: LOGIN_FAIL, payload: err})
+    //         })
+    // }
+    
 
     return(
         <SafeAreaView>
@@ -38,7 +57,7 @@ export function SignUp({ navigation }) {
                     color: '#2a4565',
                     marginTop: 25
                 }}>Sign Up</Text>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={() => navigation.navigate('Login')}>
                     <Text style={{
                         fontFamily: 'Martel-Bold',
                         fontSize: 13,
@@ -193,7 +212,18 @@ export function SignUp({ navigation }) {
                     borderRadius: 30,
                     width: '50%',
                     height: 50,
-                }}>
+                }}
+                onPress={() => {
+                    dispatch(register(form))
+                    setForm({
+                        username: '',
+                        password: '',
+                        email: '',
+                        bio: '',
+                        allowPost: ''
+                    })
+                }}
+                >
                     <Text style={styles.moreButtonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
