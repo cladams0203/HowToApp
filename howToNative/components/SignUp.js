@@ -12,7 +12,7 @@ import { Nav } from './Nav'
 export function SignUp({ navigation }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
-    console.log(user)
+
     const radio_props = [
         {label: 'Lurker', value: false, text: 'I\'m just here to learn'},
         {label: 'Contributor', value: true, text: 'I\'ve got stuff to contribute'}
@@ -24,7 +24,8 @@ export function SignUp({ navigation }) {
         bio: '',
         allowPost: ''
     })
-    // console.log(form)
+  
+   
 
     // const login = (input) => dispatch => {
     //     dispatch({type: LOADING})
@@ -214,14 +215,16 @@ export function SignUp({ navigation }) {
                     height: 50,
                 }}
                 onPress={() => {
+                    // setForm({
+                    //     username: '',
+                    //     password: '',
+                    //     email: '',
+                    //     bio: '',
+                    //     allowPost: ''
+                    // })
+                
                     dispatch(register(form))
-                    setForm({
-                        username: '',
-                        password: '',
-                        email: '',
-                        bio: '',
-                        allowPost: ''
-                    })
+                   
                 }}
                 >
                     <Text style={styles.moreButtonText}>Submit</Text>

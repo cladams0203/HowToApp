@@ -18,9 +18,9 @@ const Drawer = createDrawerNavigator()
 
 export function Container() {
     const user = useSelector(state => state.user)
-    console.log(user)
     return(
         <>
+      
         {user.loading ? <Loading /> : 
         <NavigationContainer>
                 <StatusBar barStyle="dark-content" />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, ImageBackground, Text, Image } from 'react-native'
-
+import Spinner from 'react-native-loading-spinner-overlay'
 
 export function Loading() {
 
@@ -11,6 +11,11 @@ export function Loading() {
                 <View style={styles.flexView}>
                     <Image source={require('../images/loadingIcon.png')} />
                     <Text style={styles.textStyle}>How-To</Text>
+                    <Spinner 
+                    textStyle={{color: 'white'}}
+                        visible={true}
+                        textContent={'...Loading'}
+                    />
                 </View>
             </ImageBackground>   
     )
