@@ -25,18 +25,6 @@ export function SignUp({ navigation }) {
         allowPost: ''
     })
   
-   
-
-    // const login = (input) => dispatch => {
-    //     dispatch({type: LOADING})
-    //     api().post('/users/register', input)
-    //         .then(res => {
-    //             dispatch({type: LOGIN_SUCCESS, payload: res.data})
-    //         })
-    //         .catch(err => {
-    //             dispatch({type: LOGIN_FAIL, payload: err})
-    //         })
-    // }
     
 
     return(
@@ -222,7 +210,7 @@ export function SignUp({ navigation }) {
                     //     bio: '',
                     //     allowPost: ''
                     // })
-                
+                    
                     dispatch(register(form))
                    
                 }}
