@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { ScrollView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
+import { SafeAreaView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
 import { styles } from './styles'
+import { Nav } from './Nav'
+import { login } from '../utils/actions/userAction'
+import { useDispatch } from 'react-redux'
 
-
-export function Login() {
-
+export function Login({ navigation }) {
+    const dispatch = useDispatch()
     const [form, setForm] = useState({
         username: '',
         password: ''
     })
 
     return (
+        <SafeAreaView>
+            <Nav navigation={navigation} />
         <KeyboardAwareScrollView style={{
             backgroundColor: '#a8dbd8',
             height: '100%'
@@ -65,12 +69,17 @@ export function Login() {
                     autoCorrect={false}
                     />
                     <TouchableHighlight style={{
-                    backgroundColor: '#fdba77',
-                    borderRadius: 30,
-                    width: '50%',
-                    height: 50,
-                    marginTop: 50
-                }}>
+                        backgroundColor: '#fdba77',
+                        borderRadius: 30,
+                        width: '50%',
+                        height: 50,
+                        marginTop: 50
+                    }}
+                    onPress={() => {
+                        setForm({username: '', password: ''})
+                        dispatch(login(form))
+                    }}
+                    >
                     <Text style={styles.moreButtonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
@@ -84,5 +93,6 @@ export function Login() {
             </View>
             
         </KeyboardAwareScrollView>
+        </SafeAreaView>
     )
 }

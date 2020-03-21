@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
+import { SafeAreaView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
 import { styles } from './styles'
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-export function SignUp() {
+import { register } from '../utils/actions/userAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { Nav } from './Nav'
+
+
+export function SignUp({ navigation }) {
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
+
     const radio_props = [
         {label: 'Lurker', value: false, text: 'I\'m just here to learn'},
         {label: 'Contributor', value: true, text: 'I\'ve got stuff to contribute'}
@@ -16,9 +24,12 @@ export function SignUp() {
         bio: '',
         allowPost: ''
     })
-    console.log(form)
+  
+    
 
     return(
+        <SafeAreaView>
+            <Nav navigation={navigation}/>
         <KeyboardAwareScrollView style={{
             backgroundColor: '#a8dbd8',
         }}>
@@ -35,7 +46,7 @@ export function SignUp() {
                     color: '#2a4565',
                     marginTop: 25
                 }}>Sign Up</Text>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={() => navigation.navigate('Login')}>
                     <Text style={{
                         fontFamily: 'Martel-Bold',
                         fontSize: 13,
@@ -60,7 +71,7 @@ export function SignUp() {
                     }} 
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontSize: 28,
                     fontFamily: 'Martel-Regular',
@@ -75,7 +86,7 @@ export function SignUp() {
                     secureTextEntry={true}
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontSize: 28,
                     fontFamily: 'Martel-Regular',
@@ -89,7 +100,7 @@ export function SignUp() {
                             return (
                                 <View key={index}>
                                 <RadioButton key={index} style={{
-                                   marginTop: 10
+                                    marginTop: 10
                                     
                                 }}>
                                     <RadioButtonInput 
@@ -99,7 +110,7 @@ export function SignUp() {
                                         onPress={value => setForm({...form, allowPost: value})}
                                         buttonOuterColor={'#36827e'}
                                         buttonInnerColor={'#36827e'}
-                                    />
+                                        />
                                     <RadioButtonLabel 
                                         obj={item}
                                         index={index}
@@ -112,7 +123,7 @@ export function SignUp() {
                                             paddingTop: 15
                                             
                                         }}
-                                    />
+                                        />
                                     
                                 </RadioButton>
                                 <Text style={{
@@ -150,7 +161,7 @@ export function SignUp() {
                     secureTextEntry={true}
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontFamily: 'Martel-Regular',
                     fontSize: 13,
@@ -176,7 +187,7 @@ export function SignUp() {
                     secureTextEntry={true}
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontFamily: 'Martel-Regular',
                     fontSize: 13,
@@ -190,7 +201,20 @@ export function SignUp() {
                     borderRadius: 30,
                     width: '50%',
                     height: 50,
-                }}>
+                }}
+                onPress={() => {
+                    // setForm({
+                    //     username: '',
+                    //     password: '',
+                    //     email: '',
+                    //     bio: '',
+                    //     allowPost: ''
+                    // })
+                    
+                    dispatch(register(form))
+                   
+                }}
+                >
                     <Text style={styles.moreButtonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
@@ -204,6 +228,7 @@ export function SignUp() {
                 <Image source={require('../images/footerDraft.png')} style={{alignSelf: "center", marginBottom: 10}}></Image>
             </View>
         </KeyboardAwareScrollView>
+        </SafeAreaView>
 
     )
 }

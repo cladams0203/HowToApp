@@ -1,14 +1,20 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { SafeAreaView, View, StyleSheet, Text } from 'react-native'
 import { Icon } from 'react-native-elements'
-export function Nav() {
+import { NavigationContainer } from '@react-navigation/native'
+export function Nav({navigation }) {
 
     return (
+        <SafeAreaView>
+
         <View style={styles.container}>
             <Icon iconStyle={styles.icons} name='search'/>
             <Text style={styles.heading}>How-To</Text>
-            <Icon iconStyle={styles.icons} name='menu'/>
+            <Icon iconStyle={styles.icons}
+                onPress={() => navigation.toggleDrawer()}
+                name='menu'/>
         </View>
+        </SafeAreaView>
     )
 }
 

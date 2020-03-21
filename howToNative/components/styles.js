@@ -155,7 +155,8 @@ export const styles = StyleSheet.create({
         fontFamily: 'Martel-Bold',
         fontSize: 18,
         width: '80%',
-        textAlign: 'center'
+        textAlign: 'center',
+        alignSelf: "center"
     },
     creatorHeading: {
         color: '#2a4565',

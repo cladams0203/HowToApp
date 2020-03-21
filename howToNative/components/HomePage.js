@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { ScrollView, Text, View, TouchableHighlight, StyleSheet, TextInput, Image } from 'react-native'
+import {SafeAreaView, ScrollView, Text, View, TouchableHighlight, StyleSheet, TextInput, Image } from 'react-native'
 import { Input, Icon } from 'react-native-elements'
 import { styles } from './styles'
+import { Nav } from './Nav'
 
-export function HomePage() {
+export function HomePage(props) {
+    const navigation = props.navigation
     const [topicActive, setTopicActive] = useState(true)
     const [topics, setTopics] = useState([
         {name: 'Greatest Grilled Cheese', img: require('../images/grilledCheese.png'), topic: 'Food & Ents'},
@@ -16,6 +18,8 @@ export function HomePage() {
     ])
 
     return (
+        <SafeAreaView>
+        <Nav navigation={navigation} />
         <ScrollView style={styles.mainContainer}>
             <View style={styles.container}>
                 <Text style={styles.heading}>Welcome!</Text>
@@ -33,7 +37,9 @@ export function HomePage() {
             <View style={styles.creatorContainer}>
                 <Image source={require('../images/studioIcon.png')} style={styles.creatorImage}></Image>
                 <Text style={styles.creatorHeading}>Creator Studio</Text>
-                <Text style={styles.creatorText}>Do more with a How-To account!  Log in or Sign Up Here</Text>
+                <TouchableHighlight style={{zIndex: 1, width: '100%'}} onPress={() => navigation.navigate('Sign Up')}>
+                    <Text style={styles.creatorText}>Do more with a How-To account!  Log in or Sign Up Here</Text>
+                </TouchableHighlight>
             </View>
             <View style={styles.draftContainer}>
                 <Image source={require('../images/draftIcon.png')} style={styles.creatorImage}></Image>
@@ -65,7 +71,7 @@ export function HomePage() {
                 onPress={() => {
                     setTopicActive(true)
                 }}
-                    >
+                >
                     <Text style={
                         !topicActive ?
                         styles.toggleText :
@@ -81,7 +87,7 @@ export function HomePage() {
                                 <Text style={styles.topicText}>{item.topic}</Text>
                             </View>
                 })
-                }
+            }
             </View>
             <View style={styles.footerContainer}>
                 <Image source={require('../images/footerStudio.png')} style={{alignSelf: "center", marginBottom: 10}}></Image>
@@ -94,6 +100,7 @@ export function HomePage() {
 
             
         </ScrollView>
+        </SafeAreaView>
     )
 }
 

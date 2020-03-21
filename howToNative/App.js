@@ -7,25 +7,21 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
-import { Nav } from './components/Nav'
-import { SignUp } from './components/SignUp'
-import { Login } from './components/Login'
-import { DraftArticle } from './components/DraftArticle'
+import { Container } from './Container'
+import { Provider } from 'react-redux'
+import reducer from './utils/reducers/index'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
-
+const store = createStore(reducer, applyMiddleware(thunk, logger))
+console.log(store.getState())
 const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Nav />
-        <DraftArticle />
-        {/* <Login /> */}
-        {/* <SignUp /> */}
-        
-      </SafeAreaView>
-    </>
+    <Provider store={store}>
+      <Container />
+    </Provider>
+
   );
 };
 

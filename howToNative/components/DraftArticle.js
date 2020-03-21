@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
+import { SafeAreaView, Text, View, TextInput, Image, TouchableHighlight } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { styles } from './styles'
+import { Nav } from './Nav'
 
 
-export function DraftArticle() {
+export function DraftArticle({navigation}) {
 
     const [form, setForm] = useState({
 
     })
 
     return (
+        <SafeAreaView>
+            <Nav navigation={navigation} />
         <KeyboardAwareScrollView style={{
             backgroundColor: '#a8dbd8',
         }}>
@@ -61,7 +64,7 @@ export function DraftArticle() {
                     }} 
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontFamily: 'Martel-Bold',
                     fontSize: 13,
@@ -86,7 +89,7 @@ export function DraftArticle() {
                     secureTextEntry={true}
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontFamily: 'Martel-Bold',
                     fontSize: 13,
@@ -113,7 +116,7 @@ export function DraftArticle() {
                     secureTextEntry={true}
                     autoCapitalize='none'
                     autoCorrect={false}
-                />
+                    />
                 <Text style={{
                     fontFamily: 'Martel-Bold',
                     fontSize: 13,
@@ -143,5 +146,6 @@ export function DraftArticle() {
                 <Image source={require('../images/footerDraft.png')} style={{alignSelf: "center", marginBottom: 10}}></Image>
             </View>
         </KeyboardAwareScrollView>
+                </SafeAreaView>
     )
 }

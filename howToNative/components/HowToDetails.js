@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, View, Text, Image } from 'react-native'
+import { SafeAreaView, ScrollView, View, Text, Image } from 'react-native'
 import api from '../utils/api'
 import { styles } from './styles'
+import { Nav } from './Nav'
 
-export function HowToDetails() {
+export function HowToDetails({ navigation }) {
 
     const [howTo, setHowTo] = useState()
     useEffect(() => {
         api().get('/how-to/1')
             .then(res => {
-                console.log(res.data)
                 setHowTo(res.data)
             })
             .catch(err => {
@@ -18,6 +18,8 @@ export function HowToDetails() {
     }, [])
 
     return (
+        <SafeAreaView>
+            <Nav navigation={navigation} />
         <ScrollView style={styles.mainContainer}>
             <View style={styles.container}>
                 <View style={{
@@ -25,7 +27,7 @@ export function HowToDetails() {
                     justifyContent: "center",
                     flexDirection: "row",
                     marginTop: 20
-                    }}>
+                }}>
                     <Text style={{
                         lineHeight: 50,
                         fontFamily: 'Martel-Bold',
@@ -89,5 +91,6 @@ export function HowToDetails() {
             </View>
 
         </ScrollView>
+        </SafeAreaView>
     )
 }
